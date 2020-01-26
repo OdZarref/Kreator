@@ -1,30 +1,30 @@
-def remover_sobrenome_pequeno(nome, sobrenomes):
-    for sobrenome in sobrenomes:
-        if len(sobrenome) <= 3:
-            sobrenomes.remove(sobrenome)
+def remove_small_surname(name, surnames):
+    for surname in surnames:
+        if len(surname) <= 3:
+            surnames.remove(surname)
 
-    return sobrenomes
-
-
-def criar_complementares(data_nascimento):
-    complementar = ['123', '1234', '12345']
-    complementar.append(data_nascimento[0:2])
-    complementar.append(data_nascimento[-4:])
-    complementar.append(data_nascimento[-2:])
-
-    numero = int(data_nascimento[-2:])
-    if numero < 10:
-        complementar.append(data_nascimento[-1])
-
-    return complementar
+    return surnames
 
 
-def concatenacao_sobrenome_pequeno(nome, sobrenomes):
-    nome_concatenado = ''
+def create_complements(birth_date):
+    complements = ['123', '1234', '12345']
+    complements.append(birth_date[0:2])
+    complements.append(birth_date[-4:])
+    complements.append(birth_date[-2:])
 
-    for pos, sobrenome in enumerate(sobrenomes):
-        if len(sobrenome) <= 3:
-            nome_concatenado = nome + sobrenome + sobrenomes[pos + 1]
+    number = int(birth_date[-2:])
+    if number < 10:
+        complements.append(birth_date[-1])
 
-    return nome_concatenado
+    return complements
+
+
+def concatenation_small_surname(name, surnames):
+    name_concatenated = ''
+
+    for pos, surname in enumerate(surnames):
+        if len(surname) <= 3:
+            name_concatenated = name + surname + surnames[pos + 1]
+
+    return name_concatenated
     

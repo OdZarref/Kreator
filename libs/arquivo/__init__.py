@@ -1,53 +1,95 @@
-def verificar_arquivo(nome_arquivo):
+def verify_file(file_name):
     from time import sleep
-    from libs.interface import linhas
+    from libs.interface import lines
 
     try:
-        arquivo = open(nome_arquivo + '.txt', 'rt')
-        arquivo.close()
+        file = open(file_name + '.txt', 'rt')
+        file.close()
     except FileNotFoundError:
-        texto = f'ARQUIVO "{nome_arquivo}.txt" NÃO ENCONTRADO'
-        linhas(texto)
+        text = f'ARQUIVO "{file_name}.txt" NÃO ENCONTRADO'
+        lines(text)
         sleep(1)
         return False
     else:
-        texto = f'ARQUIVO "{nome_arquivo}.txt" ENCONTRADO'
-        linhas(texto)
+        text = f'ARQUIVO "{file_name}.txt" ENCONTRADO'
+        lines(text)
         sleep(1)
         return True
 
 
-def criar_arquivo(nome_arquivo):
+def create_file(file_name):
     from time import sleep
 
     try:
-        arquivo = open(nome_arquivo + '.txt', 'wt+')
-        arquivo.close()
+        file = open(file_name + '.txt', 'wt+')
+        file.close()
     except:
         print('ERRO AO CRIAR ARQUIVO')
         sleep(1)
     else:
-        print(f'ARQUIVO "{nome_arquivo}.txt" CRIADO')
-        print('=' * (15 + int(len(nome_arquivo))))
+        print(f'ARQUIVO "{file_name}.txt" CRIADO')
+        print('=' * (15 + int(len(file_name))))
         sleep(1)
 
 
-def escrever_senhas(nome_arquivo, nome, complementar):
+def write_passwords(file_name, name, complements):
     from time import sleep
 
     try:
-        arquivo = open(nome_arquivo + '.txt', 'at')
+        file = open(file_name + '.txt', 'at')
     except:
         print('ERRO AO TENTAR ABRIR ARQUIVO PARA ESCRITURA')
         sleep(0.5)
     else:
-        if len(nome) >= 6:
-            print(nome)
-            arquivo.write(nome + '\n')
+        if len(name) >= 6:
+            print(name)
+            file.write(name + '\n')
 
-        for item in complementar:
-            print(nome + item)
-            arquivo.write(nome + item + '\n')
+        for item in complements:
+            print(name + item)
+            file.write(name + item + '\n')
             sleep(0.2)
     finally:
-        arquivo.close()
+        file.close()
+
+
+def write_one_surnames(file_name, name, surnames, complements):
+    concatenation = name + surnames[0]
+    write_passwords(file_name, concatenation, complements)
+
+
+def write_two_surnames(file_name, name, surnames, complements):
+    concatenation = name + surnames[0] 
+    write_passwords(file_name, concatenation, complements)
+    concatenation = name + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = name + surnames[0] + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+
+
+def write_three_surnames(file_name, name, surnames, complements):
+    concatenation = name + surnames[0] 
+    write_passwords(file_name, concatenation, complements)
+    concatenation = name + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = name + surnames[2]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = name + surnames[0] + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = name + surnames[0] + surnames[1] + surnames[2]
+    write_passwords(file_name, concatenation, complements)
+
+
+def write_four_surnames(file_name, name, surnames, complements):
+    concatenation = name + surnames[0] 
+    write_passwords(file_name, concatenation, complements)
+    concatenation = name + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = name + surnames[2]
+    concatenation = name + surnames[3]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = name + surnames[0] + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = name + surnames[0] + surnames[1] + surnames[2]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = name + surnames[0] + surnames[1] + surnames[2] + surnames[3]

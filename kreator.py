@@ -3,105 +3,77 @@ from libs.texto import *
 from libs.interface import *
 from libs.leitura import *
 
-linhas('WD KREATOR')
-dados_nome = ler_nome_sobrenome()
-data_nascimento = ler_nascimento()
-apelidos = ler_apelidos()
-complementar = criar_complementares(data_nascimento)
-nome = ''
-sobrenomes = list()
+lines('WD KREATOR')
+data_name = read_name_surname()
+birth_date = read_birth_date()
+nicknames = read_nicknames()
+complements = create_complements(birth_date)
+name = ''
+surnames = list()
 
-for nomes in dados_nome:
-    if nomes == dados_nome[0]:
-        nome = nomes
+for names in data_name:
+    if names == data_name[0]:
+        name = names
     else:
-        sobrenomes.append(nomes)
+        surnames.append(names)
 
-nome_arquivo = nome
+file_name = name
 
-existencia_arquivo = verificar_arquivo(nome_arquivo)
-if not existencia_arquivo:
-    criar_arquivo(nome_arquivo)
+verify_file = verify_file(file_name)
+if not verify_file:
+    create_file(file_name)
 
-nome_pequeno = concatenacao_sobrenome_pequeno(nome, sobrenomes)
-if nome_pequeno != '':
-    escrever_senhas(nome_arquivo, nome_pequeno, complementar)
+small_surname = concatenation_small_surname(name, surnames)
+if small_surname != '':
+    write_passwords(file_name, small_surname, complements)
     
-sobrenomes = remover_sobrenome_pequeno(nome, sobrenomes)
+surnames = remove_small_surname(name, surnames)
 
-if len(sobrenomes) == 1:
-    concatenacao = nome + sobrenomes[0]
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
+if len(surnames) == 1:
+    write_one_surnames(file_name, name, surnames, complements)
+elif len(surnames) == 2:
+    write_two_surnames(file_name, name, surnames, complements)
+elif len(surnames) == 3:
+    write_three_surnames(file_name, name, surnames, complements)
+elif len(surnames) == 4:
+    write_four_surnames(file_name, name, surnames, complements)
 
-elif len(sobrenomes) == 2:
-    concatenacao = nome + sobrenomes[0] 
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
-    concatenacao = nome + sobrenomes[1]
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
-    concatenacao = nome + sobrenomes[0] + sobrenomes[1]
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
 
-elif len(sobrenomes) == 3:
-    concatenacao = nome + sobrenomes[0] 
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
-    concatenacao = nome + sobrenomes[1]
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
-    concatenacao = nome + sobrenomes[2]
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
-    concatenacao = nome + sobrenomes[0] + sobrenomes[1]
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
-    concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2]
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
+for nickname in nicknames:
+    if len(surnames) == 1:
+        concatenation = nickname + surnames[0]
+        write_passwords(file_name, concatenation, complements)
 
-elif len(sobrenomes) == 4:
-    concatenacao = nome + sobrenomes[0] 
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
-    concatenacao = nome + sobrenomes[1]
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
-    concatenacao = nome + sobrenomes[2]
-    concatenacao = nome + sobrenomes[3]
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
-    concatenacao = nome + sobrenomes[0] + sobrenomes[1]
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
-    concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2]
-    escrever_senhas(nome_arquivo, concatenacao, complementar)
-    concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2] + sobrenomes[3]
+    elif len(surnames) == 2:
+        concatenation = nickname + surnames[0] 
+        write_passwords(file_name, concatenation, complements)
+        concatenation = nickname + surnames[1]
+        write_passwords(file_name, concatenation, complements)
+        concatenation = nickname + surnames[0] + surnames[1]
+        write_passwords(file_name, concatenation, complements)
 
-for apelido in apelidos:
-    if len(sobrenomes) == 1:
-        concatenacao = apelido + sobrenomes[0]
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
+    elif len(surnames) == 3:
+        concatenation = nickname + surnames[0] 
+        write_passwords(file_name, concatenation, complements)
+        concatenation = nickname + surnames[1]
+        write_passwords(file_name, concatenation, complements)
+        concatenation = nickname + surnames[2]
+        write_passwords(file_name, concatenation, complements)
+        concatenation = nickname + surnames[0] + surnames[1]
+        write_passwords(file_name, concatenation, complements)
+        concatenation = nickname + surnames[0] + surnames[1] + surnames[2]
+        write_passwords(file_name, concatenation, complements)
 
-    elif len(sobrenomes) == 2:
-        concatenacao = apelido + sobrenomes[0] 
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-        concatenacao = apelido + sobrenomes[1]
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-        concatenacao = apelido + sobrenomes[0] + sobrenomes[1]
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-
-    elif len(sobrenomes) == 3:
-        concatenacao = apelido + sobrenomes[0] 
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-        concatenacao = apelido + sobrenomes[1]
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-        concatenacao = apelido + sobrenomes[2]
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-        concatenacao = apelido + sobrenomes[0] + sobrenomes[1]
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-        concatenacao = apelido + sobrenomes[0] + sobrenomes[1] + sobrenomes[2]
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-
-    elif len(sobrenomes) == 4:
-        concatenacao = apelido + sobrenomes[0] 
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-        concatenacao = apelido + sobrenomes[1]
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-        concatenacao = nome + sobrenomes[2]
-        concatenacao = nome + sobrenomes[3]
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-        concatenacao = nome + sobrenomes[0] + sobrenomes[1]
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-        concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2]
-        escrever_senhas(nome_arquivo, concatenacao, complementar)
-        concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2] + sobrenomes[3]
+    elif len(surnames) == 4:
+        concatenation = nickname + surnames[0] 
+        write_passwords(file_name, concatenation, complements)
+        concatenation = nickname + surnames[1]
+        write_passwords(file_name, concatenation, complements)
+        concatenation = name + surnames[2]
+        concatenation = name + surnames[3]
+        write_passwords(file_name, concatenation, complements)
+        concatenation = name + surnames[0] + surnames[1]
+        write_passwords(file_name, concatenation, complements)
+        concatenation = name + surnames[0] + surnames[1] + surnames[2]
+        write_passwords(file_name, concatenation, complements)
+        concatenation = name + surnames[0] + surnames[1] + surnames[2] + surnames[3]

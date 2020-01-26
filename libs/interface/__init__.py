@@ -1,4 +1,4 @@
-def linhas(texto):
-    print('=' * len(texto))
-    print(texto.center(len(texto)))
-    print('=' * len(texto))
+def lines(text):
+    print('=' * len(text))
+    print(text.center(len(text)))
+    print('=' * len(text))

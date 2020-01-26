@@ -1,16 +1,16 @@
-def ler_nome_sobrenome():
-    nome_sobrenome = str(input('Nome completo: ')).split()
+def read_name_surname():
+    name_surname = str(input('Name: ')).split()
 
-    return nome_sobrenome
-
-
-def ler_nascimento():
-    data_nascimento = str(input('Data de nascimento: '))
-
-    return data_nascimento
+    return name_surname
 
 
-def ler_apelidos():
-    apelidos = str(input('Apelido: ')).split(', ')
+def read_birth_date():
+    birth_date = str(input('Birth Date: '))
 
-    return apelidos
+    return birth_date
+
+
+def read_nicknames():
+    nicknames = str(input('Apelido: ')).split(', ')
+
+    return nicknames
