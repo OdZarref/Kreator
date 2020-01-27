@@ -38,12 +38,16 @@ elif len(surnames) == 3:
 elif len(surnames) == 4:
     write_four_surnames(file_name, name, surnames, complements)
 
-for nickname in nicknames:
-    if len(surnames) == 1:
-        write_one_nickname(file_name, nickname, surnames, complements)
-    elif len(surnames) == 2:
-        write_two_nickname(file_name, nickname, surnames, complements)
-    elif len(surnames) == 3:
-        write_three_nickname(file_name, nickname, surnames, complements)
-    elif len(surnames) == 4:
-        write_four_nickname(file_name, nickname, surnames, complements)
+
+if len(nicknames) > 0:
+    for nickname in nicknames:
+        if len(surnames) == 0:
+            write_passwords(file_name, nickname, complements)
+        elif len(surnames) == 1:
+            write_one_surnames(file_name, nickname, surnames, complements)
+        elif len(surnames) == 2:
+            write_two_surnames(file_name, nickname, surnames, complements)
+        elif len(surnames) == 3:
+            write_three_surnames(file_name, nickname, surnames, complements)
+        elif len(surnames) == 4:
+            write_four_surnames(file_name, nickname, surnames, complements)
