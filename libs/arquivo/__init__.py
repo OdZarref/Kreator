@@ -86,6 +86,7 @@ def write_four_surnames(file_name, name, surnames, complements):
     concatenation = name + surnames[1]
     write_passwords(file_name, concatenation, complements)
     concatenation = name + surnames[2]
+    write_passwords(file_name, concatenation, complements)
     concatenation = name + surnames[3]
     write_passwords(file_name, concatenation, complements)
     concatenation = name + surnames[0] + surnames[1]
@@ -93,3 +94,46 @@ def write_four_surnames(file_name, name, surnames, complements):
     concatenation = name + surnames[0] + surnames[1] + surnames[2]
     write_passwords(file_name, concatenation, complements)
     concatenation = name + surnames[0] + surnames[1] + surnames[2] + surnames[3]
+
+
+def write_one_nickname(file_name, nickname, surnames, complements):
+    concatenation = nickname + surnames[0]
+    write_passwords(file_name, concatenation, complements)
+
+
+def write_two_nickname(file_name, nickname, surnames, complements):
+    concatenation = nickname + surnames[0] 
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[0] + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+
+
+def write_three_nickname(file_name, nickname, surnames, complements):
+    concatenation = nickname + surnames[0] 
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[2]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[0] + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[0] + surnames[1] + surnames[2]
+    write_passwords(file_name, concatenation, complements)
+
+
+def write_four_nickname(file_name, nickname, surnames, complements):
+    concatenation = nickname + surnames[0] 
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[2]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[3]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[0] + surnames[1]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[0] + surnames[1] + surnames[2]
+    write_passwords(file_name, concatenation, complements)
+    concatenation = nickname + surnames[0] + surnames[1] + surnames[2] + surnames[3]
