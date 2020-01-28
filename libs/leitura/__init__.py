@@ -1,5 +1,5 @@
 def read_name_surname():
-    name_surname = str(input('Name: ')).split()
+    name_surname = str(input('Name: ')).lower().split()
 
     return name_surname
 
