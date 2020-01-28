@@ -30,13 +30,13 @@ if small_surname != '':
 surnames = remove_small_surname(name, surnames)
 
 if len(surnames) == 1:
-    write_one_surnames(file_name, name, surnames, complements)
+    write_one_names(file_name, name, surnames, complements)
 elif len(surnames) == 2:
-    write_two_surnames(file_name, name, surnames, complements)
+    write_two_names(file_name, name, surnames, complements)
 elif len(surnames) == 3:
-    write_three_surnames(file_name, name, surnames, complements)
+    write_three_names(file_name, name, surnames, complements)
 elif len(surnames) == 4:
-    write_four_surnames(file_name, name, surnames, complements)
+    write_four_names(file_name, name, surnames, complements)
 
 
 if len(nicknames) > 0:
@@ -44,10 +44,10 @@ if len(nicknames) > 0:
         if len(surnames) == 0:
             write_passwords(file_name, nickname, complements)
         elif len(surnames) == 1:
-            write_one_surnames(file_name, nickname, surnames, complements)
+            write_one_names(file_name, nickname, surnames, complements)
         elif len(surnames) == 2:
-            write_two_surnames(file_name, nickname, surnames, complements)
+            write_two_names(file_name, nickname, surnames, complements)
         elif len(surnames) == 3:
-            write_three_surnames(file_name, nickname, surnames, complements)
+            write_three_names(file_name, nickname, surnames, complements)
         elif len(surnames) == 4:
-            write_four_surnames(file_name, nickname, surnames, complements)
+            write_four_names(file_name, nickname, surnames, complements)

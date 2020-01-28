@@ -53,12 +53,12 @@ def write_passwords(file_name, name, complements):
         file.close()
 
 
-def write_one_surnames(file_name, name, surnames, complements):
+def write_one_names(file_name, name, surnames, complements):
     concatenation = name + surnames[0]
     write_passwords(file_name, concatenation, complements)
 
 
-def write_two_surnames(file_name, name, surnames, complements):
+def write_two_names(file_name, name, surnames, complements):
     concatenation = name + surnames[0] 
     write_passwords(file_name, concatenation, complements)
     concatenation = name + surnames[1]
@@ -67,7 +67,7 @@ def write_two_surnames(file_name, name, surnames, complements):
     write_passwords(file_name, concatenation, complements)
 
 
-def write_three_surnames(file_name, name, surnames, complements):
+def write_three_names(file_name, name, surnames, complements):
     concatenation = name + surnames[0] 
     write_passwords(file_name, concatenation, complements)
     concatenation = name + surnames[1]
@@ -80,7 +80,7 @@ def write_three_surnames(file_name, name, surnames, complements):
     write_passwords(file_name, concatenation, complements)
 
 
-def write_four_surnames(file_name, name, surnames, complements):
+def write_four_names(file_name, name, surnames, complements):
     concatenation = name + surnames[0] 
     write_passwords(file_name, concatenation, complements)
     concatenation = name + surnames[1]
