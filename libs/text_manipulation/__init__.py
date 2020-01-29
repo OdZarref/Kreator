@@ -6,17 +6,18 @@ def remove_small_surname(name, surnames):
     return surnames
 
 
-def create_complements(birth_date=999):
+def create_complements(birth_date):
     complements = ['123', '1234', '12345']
 
-    if birth_date == 999:
+    print(birth_date)
+    if birth_date != 0:
         complements.append(birth_date[0:2])
         complements.append(birth_date[-4:])
         complements.append(birth_date[-2:])
-
-    number = int(birth_date[-2:])
-    if number < 10:
-        complements.append(birth_date[-1])
+        
+        number = int(birth_date[-2:])
+        if number < 10:
+            complements.append(birth_date[-1])
 
     return complements
 
