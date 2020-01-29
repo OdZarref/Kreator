@@ -6,15 +6,10 @@ def read_name_surname():
 
 def read_birth_date():
     while True:
-        try:
-            birth_date = str(input('Birth Date: '))
-        except KeyboardInterrupt:
-            continue
-        else:
-            if len(birth_date) == 6 or len(birth_date) == 8 or len(birth_date) == 0:
-                break
-            else:
-                continue
+        birth_date = str(input('Birth Date: '))
+
+        if len(birth_date) == 6 or len(birth_date) == 8 or len(birth_date) == 0:
+            break
 
     return birth_date
 
