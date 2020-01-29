@@ -1,7 +1,7 @@
-from libs.arquivo import *
-from libs.texto import *
+from libs.file_manipulation import *
+from libs.text_manipulation import *
 from libs.interface import *
-from libs.leitura import *
+from libs.input import *
 
 lines('WD KREATOR')
 data_name = read_name_surname()
