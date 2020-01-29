@@ -3,11 +3,10 @@ from libs.text_manipulation import *
 from libs.interface import *
 from libs.input import *
 
-lines('WD KREATOR')
+logo()
 data_name = read_name_surname()
 birth_date = read_birth_date()
 nicknames = read_nicknames()
-complements = create_complements(birth_date)
 name = ''
 surnames = list()
 
@@ -19,6 +18,14 @@ for names in data_name:
 
 file_name = name
 
+if birth_date == '':
+    birth_date = 0
+
+complements = create_complements(birth_date)
+
+if file_name == '':
+    file_name = 'passwords'
+    
 verify_file = verify_file(file_name)
 if not verify_file:
     create_file(file_name)
