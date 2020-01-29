@@ -1,4 +1,4 @@
-def verify_file(file_name):
+def verify_file(file_name='passwords'):
     from time import sleep
     from libs.interface import lines
 
@@ -17,7 +17,7 @@ def verify_file(file_name):
         return True
 
 
-def create_file(file_name):
+def create_file(file_name='passwords'):
     from time import sleep
 
     try:
@@ -48,7 +48,7 @@ def write_passwords(file_name, name, complements):
         for item in complements:
             print(name + item)
             file.write(name + item + '\n')
-            sleep(0.2)
+            sleep(0.1)
     finally:
         file.close()
 
