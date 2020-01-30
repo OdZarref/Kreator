@@ -13,7 +13,7 @@ def read_birth_date():
         if len(birth_date) == 6 or len(birth_date) == 8 or len(birth_date) == 0:
             break
         else:
-            lines('DEVEM SER VALORES NUMÉRICOS DE 6 OU 8 CARACTERES DE COMPRIMENTO.\nEX: 190201')
+            lines('DEVEM SER VALORES NUMÉRICOS DE 6 OU 8 CARACTERES DE COMPRIMENTO.')
 
     return birth_date
 
