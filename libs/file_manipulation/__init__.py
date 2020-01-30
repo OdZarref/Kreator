@@ -6,12 +6,12 @@ def verify_file(file_name='passwords'):
         file = open(file_name + '.txt', 'rt')
         file.close()
     except FileNotFoundError:
-        text = f'ARQUIVO "{file_name}.txt" NÃO ENCONTRADO'
+        text = f'"{file_name}.txt" not found'
         lines(text)
         sleep(1)
         return False
     else:
-        text = f'ARQUIVO "{file_name}.txt" ENCONTRADO'
+        text = f'"{file_name}.txt" found'
         lines(text)
         sleep(1)
         return True
@@ -24,10 +24,10 @@ def create_file(file_name='passwords'):
         file = open(file_name + '.txt', 'wt+')
         file.close()
     except:
-        print('ERRO AO CRIAR ARQUIVO')
+        print('Error creating file.')
         sleep(1)
     else:
-        print(f'ARQUIVO "{file_name}.txt" CRIADO')
+        print(f'"{file_name}.txt" created.')
         print('=' * (15 + int(len(file_name))))
         sleep(1)
 
@@ -38,7 +38,7 @@ def write_passwords(file_name, name, complements):
     try:
         file = open(file_name + '.txt', 'at')
     except:
-        print('ERRO AO TENTAR ABRIR ARQUIVO PARA ESCRITURA')
+        print('Error trying to open writing file.')
         sleep(0.5)
     else:
         if len(name) >= 6:

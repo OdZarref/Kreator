@@ -11,7 +11,7 @@ name = ''
 surnames = list()
 
 if len(data_name) == 0 and len(birth_date) == 0 and len(nicknames) == 0:
-    print('NÃO FOI DIGITADO NENHUM ARGUMENTO.')
+    lines('No arguments have been entered. Program closed.')
 else:
 
     for names in data_name:
@@ -35,7 +35,7 @@ else:
     if not verify_file:
         create_file(file_name)
 
-    small_surname = concatenation_small_surname(name, surnames)
+    small_surname = concatenation_small_middle_name(name, surnames)
     if small_surname != '':
         write_passwords(file_name, small_surname, complements)
         
