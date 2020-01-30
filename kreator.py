@@ -10,51 +10,56 @@ nicknames = read_nicknames()
 name = ''
 surnames = list()
 
-for names in data_name:
-    if names == data_name[0]:
-        name = names
-    else:
-        surnames.append(names)
+if len(data_name) == 0 and len(birth_date) == 0 and len(nicknames) == 0:
+    print('NÃO FOI DIGITADO NENHUM ARGUMENTO.')
+else:
 
-file_name = name
+    for names in data_name:
+        if names == data_name[0]:
+            name = names
+        else:
+            surnames.append(names)
 
-if birth_date == '':
-    birth_date = 0
+    file_name = name
 
-complements = create_complements(birth_date)
+    if birth_date == '':
+        birth_date = 0
 
-if file_name == '':
-    file_name = 'passwords'
-    
-verify_file = verify_file(file_name)
-if not verify_file:
-    create_file(file_name)
-
-small_surname = concatenation_small_surname(name, surnames)
-if small_surname != '':
-    write_passwords(file_name, small_surname, complements)
-    
-surnames = remove_small_surname(name, surnames)
-
-if len(surnames) == 1:
-    write_one_names(file_name, name, surnames, complements)
-elif len(surnames) == 2:
-    write_two_names(file_name, name, surnames, complements)
-elif len(surnames) == 3:
-    write_three_names(file_name, name, surnames, complements)
-elif len(surnames) == 4:
-    write_four_names(file_name, name, surnames, complements)
+    complements = create_complements(birth_date)
 
 
-if len(nicknames) > 0:
-    for nickname in nicknames:
-        if len(surnames) == 0:
-            write_passwords(file_name, nickname, complements)
-        elif len(surnames) == 1:
-            write_one_names(file_name, nickname, surnames, complements)
-        elif len(surnames) == 2:
-            write_two_names(file_name, nickname, surnames, complements)
-        elif len(surnames) == 3:
-            write_three_names(file_name, nickname, surnames, complements)
-        elif len(surnames) == 4:
-            write_four_names(file_name, nickname, surnames, complements)
+    if file_name == '':
+        file_name = 'passwords'
+        
+    verify_file = verify_file(file_name)
+    if not verify_file:
+        create_file(file_name)
+
+    small_surname = concatenation_small_surname(name, surnames)
+    if small_surname != '':
+        write_passwords(file_name, small_surname, complements)
+        
+    surnames = remove_small_surname(name, surnames)
+
+    if len(surnames) == 1:
+        write_one_names(file_name, name, surnames, complements)
+    elif len(surnames) == 2:
+        write_two_names(file_name, name, surnames, complements)
+    elif len(surnames) == 3:
+        write_three_names(file_name, name, surnames, complements)
+    elif len(surnames) == 4:
+        write_four_names(file_name, name, surnames, complements)
+
+
+    if len(nicknames) > 0:
+        for nickname in nicknames:
+            if len(surnames) == 0:
+                write_passwords(file_name, nickname, complements)
+            elif len(surnames) == 1:
+                write_one_names(file_name, nickname, surnames, complements)
+            elif len(surnames) == 2:
+                write_two_names(file_name, nickname, surnames, complements)
+            elif len(surnames) == 3:
+                write_three_names(file_name, nickname, surnames, complements)
+            elif len(surnames) == 4:
+                write_four_names(file_name, nickname, surnames, complements)
