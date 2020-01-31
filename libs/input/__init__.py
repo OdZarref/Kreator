@@ -10,10 +10,10 @@ def read_birth_date():
     while True:
         birth_date = str(input('Birth Date: '))
 
-        if len(birth_date) == 6 or len(birth_date) == 8 or len(birth_date) == 0:
+        if len(birth_date) == 8 or len(birth_date) == 0:
             break
         else:
-            lines('Must be numeric values of 6 or 8 characters.')
+            lines('Must be numeric values of 8 characters.')
 
     return birth_date
 
@@ -22,3 +22,4 @@ def read_nicknames():
     nicknames = str(input('Nicknames: ')).split()
 
     return nicknames
+    
