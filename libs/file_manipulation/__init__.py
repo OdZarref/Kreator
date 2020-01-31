@@ -46,9 +46,10 @@ def write_passwords(file_name, name, complements):
             file.write(name + '\n')
 
         for item in complements:
-            print(name + item)
-            file.write(name + item + '\n')
-            sleep(0.1)
+            if len(name + item) >= 6:
+                print(name + item)
+                file.write(name + item + '\n')
+                sleep(0.05)
     finally:
         file.close()
 
