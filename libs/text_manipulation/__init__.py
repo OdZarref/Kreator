@@ -9,14 +9,23 @@ def remove_small_surname(name, surnames):
 def create_complements(birth_date):
     complements = ['123', '1234', '12345']
 
-    if birth_date != 0:
+
+    if len(birth_date) == 8:
         complements.append(birth_date[0:2])
+        complements.append(birth_date[-2:])
         complements.append(birth_date[-4:])
+    elif len(birth_date) == 6:
+        complements.append(birth_date[0:2])
         complements.append(birth_date[-2:])
 
-        number = int(birth_date[-2:])
-        if number < 10:
-            complements.append(birth_date[-1])
+        if int(birth_date[-2]) >= 4:
+            complements.append('19' + birth_date[-2:])
+        else:
+            complements.append('20' + birth_date[-2:])
+
+    number = int(birth_date[-2:])
+    if number < 10:
+        complements.append(birth_date[-1])
 
     return complements
 

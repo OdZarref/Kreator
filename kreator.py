@@ -13,22 +13,18 @@ surnames = list()
 if len(data_name) == 0 and len(birth_date) == 0 and len(nicknames) == 0:
     lines('No arguments have been entered. Program closed.')
 else:
+    if len(birth_date) != 0:
+        complements = create_complements(birth_date)
 
-    for names in data_name:
-        if names == data_name[0]:
-            name = names
-        else:
-            surnames.append(names)
+    if len(data_name) != 0:
+        for names in data_name:
+            if names == data_name[0]:
+                name = names
+            else:
+                surnames.append(names)
 
-    file_name = name
-
-    if birth_date == '':
-        birth_date = 0
-
-    complements = create_complements(birth_date)
-
-
-    if file_name == '':
+        file_name = name
+    else:
         file_name = 'passwords'
         
     verify_file = verify_file(file_name)
@@ -41,7 +37,9 @@ else:
         
     surnames = remove_small_surname(name, surnames)
 
-    if len(surnames) == 1:
+    if len(surnames) == 0:
+        write_passwords(file_name, name, complements)
+    elif len(surnames) == 1:
         write_one_names(file_name, name, surnames, complements)
     elif len(surnames) == 2:
         write_two_names(file_name, name, surnames, complements)
@@ -49,7 +47,6 @@ else:
         write_three_names(file_name, name, surnames, complements)
     elif len(surnames) == 4:
         write_four_names(file_name, name, surnames, complements)
-
 
     if len(nicknames) > 0:
         for nickname in nicknames:
