@@ -30,6 +30,8 @@ else:
     if not verify_file:
         create_file(file_name)
 
+    write_passwords_birth_date(file_name, birth_date)
+
     if name != '':
         write_passwords(file_name, name, complements)
 
