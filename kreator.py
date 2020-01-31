@@ -31,6 +31,9 @@ else:
     if not verify_file:
         create_file(file_name)
 
+    if name != '':
+        write_passwords(file_name, name, complements)
+
     small_surname = concatenation_small_middle_name(name, surnames)
     if small_surname != '':
         write_passwords(file_name, small_surname, complements)
@@ -60,3 +63,9 @@ else:
                 write_three_names(file_name, nickname, surnames, complements)
             elif len(surnames) == 4:
                 write_four_names(file_name, nickname, surnames, complements)
+
+    for surname in surnames:
+        write_passwords(file_name, surname, complements)
+
+    for nickname in nicknames:
+        write_passwords(file_name, nickname, complements)
