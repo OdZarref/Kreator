@@ -13,8 +13,7 @@ surnames = list()
 if len(data_name) == 0 and len(birth_date) == 0 and len(nicknames) == 0:
     lines('No arguments have been entered. Program closed.')
 else:
-    if len(birth_date) != 0:
-        complements = create_complements(birth_date)
+    complements = create_complements(birth_date)
 
     if len(data_name) != 0:
         for names in data_name:
