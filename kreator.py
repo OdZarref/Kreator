@@ -3,7 +3,7 @@ from libs.text_manipulation import *
 from libs.interface import *
 from libs.input import *
 
-logo()
+show_logo()
 data_name = read_name_surname()
 birth_date = read_birth_date()
 nicknames = read_nicknames()

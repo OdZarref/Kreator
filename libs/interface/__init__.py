@@ -4,7 +4,7 @@ def lines(text):
     print('=' * len(text))
     
 
-def logo():
+def show_logo():
     print('=' * 41)
     print('#  #  ####  ####  ####  #####  ####  ####')
     print('# #   #  #  #     #  #    #    #  #  #  #')
@@ -12,3 +12,4 @@ def logo():
     print('# #   # #   #     #  #    #    #  #  # #')
     print('#  #  #  #  ####  #  #    #    ####  #  #')
     print('=' * 41)
+    
