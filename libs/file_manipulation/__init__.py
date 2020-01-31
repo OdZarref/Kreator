@@ -32,6 +32,18 @@ def create_file(file_name='passwords'):
         sleep(1)
 
 
+def write_passwords_birth_date(file_name, birth_date):
+    from time import sleep
+
+    file = open(file_name + '.txt', 'at')
+    file.write(birth_date + '\n')
+    print(birth_date)
+    sleep(0.05)
+    file.write(birth_date[0:4] + birth_date[-2:] + '\n')
+    print(birth_date[0:4] + birth_date[-2:])
+    sleep(0.05)
+
+
 def write_passwords(file_name, name, complements):
     from time import sleep
 
