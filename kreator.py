@@ -72,4 +72,4 @@ else:
     for apelido in apelidos:
         escrever_senhas(nome_arquivo, apelido, complementos)
 
-linhas(f'Passwords written: {conta_senhas(nome_arquivo)}')
+    linhas(f'Passwords written: {conta_senhas(nome_arquivo)}')
