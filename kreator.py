@@ -1,4 +1,4 @@
-from libs.file_manipulation import *
+from libs.file_writing import *
 from libs.text_manipulation import *
 from libs.interface import *
 from libs.input import *
@@ -30,7 +30,8 @@ else:
     if not verify_file:
         create_file(file_name)
 
-    write_passwords_birth_date(file_name, birth_date)
+    if len(birth_date) != 0:
+        write_passwords_birth_date(file_name, birth_date)
 
     if name != '':
         write_passwords(file_name, name, complements)
