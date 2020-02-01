@@ -1,31 +1,57 @@
-def remove_small_surname(name, surnames):
-    for surname in surnames:
-        if len(surname) <= 3:
-            surnames.remove(surname)
+def remove_sobrenome_pequeno(nome, sobrenomes):
+    """Se a pessoa tiver um sobrenome menor que quatro letras, este sobrenome será removido para ser escrito aparte.
+    
+    Arguments:
+        nome {str} -- Nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+    
+    Returns:
+        list() -- A lista sem o sobrenome pequeno
+    """
+    for sobrenome in sobrenomes:
+        if len(sobrenome) <= 3:
+            sobrenomes.remove(sobrenome)
 
-    return surnames
-
-
-def create_complements(birth_date):
-    complements = ['123', '1234', '12345']
-
-    if len(birth_date) == 8:
-        complements.append(birth_date[0:2])
-        complements.append(birth_date[-2:])
-        complements.append(birth_date[-4:])
-
-        number = int(birth_date[-2:])
-        if number < 10:
-            complements.append(birth_date[-1])
-
-    return complements
+    return sobrenomes
 
 
-def concatenation_small_middle_name(name, surnames):
-    name_concatenated = ''
+def criar_complementos(nascimento):
+    """Cria os complementos que será concatenados com os dados do nome completo
+    
+    Arguments:
+        nascimento {str} -- A data de nascimento da pessoa
+    
+    Returns:
+        list() -- Uma lista com todos os complementos gerados
+    """
+    complementos = ['123', '1234', '12345']
 
-    for pos, surname in enumerate(surnames):
-        if len(surname) <= 3:
-            name_concatenated = name + surname + surnames[pos + 1]
+    if len(nascimento) == 8:
+        complementos.append(nascimento[0:2])
+        complementos.append(nascimento[-2:])
+        complementos.append(nascimento[-4:])
 
-    return name_concatenated
+        numero = int(nascimento[-2:])
+        if numero < 10:
+            complementos.append(nascimento[-1])
+
+    return complementos
+
+
+def concatenacao_sobrenome_pequeno(nome, sobrenomes):
+    """Concatenará o sobrenome pequeno com o nome e com o sobrenome que vier à frente.
+    
+    Arguments:
+        nome {str} -- Nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+    
+    Returns:
+        str -- O nome + sobrenome_pequeno + o sobrenome que vier à frente.
+    """
+    nome_concatenado = ''
+
+    for pos, sobrenome in enumerate(sobrenomes):
+        if len(sobrenome) <= 3:
+            nome_concatenado = nome + sobrenome + sobrenomes[pos + 1]
+
+    return nome_concatenado

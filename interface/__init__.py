@@ -1,10 +1,10 @@
-def lines(text):
-    print('=' * len(text))
-    print(text.center(len(text)))
-    print('=' * len(text))
+def linhas(texto):
+    print('=' * len(texto))
+    print(texto.center(len(texto)))
+    print('=' * len(texto))
     
 
-def show_logo():
+def mostra_logo():
     print('=' * 41)
     print('#  #  ####  ####  ####  #####  ####  ####')
     print('# #   #  #  #     #  #    #    #  #  #  #')

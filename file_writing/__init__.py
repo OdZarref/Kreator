@@ -1,98 +1,151 @@
-def verify_file(file_name='passwords'):
+def verificar_arquivo(nome_arquivo='passwords'):
+    """Verifica se o arquivo que conterá as senhas já existe.
+    
+    Keyword Arguments:
+        nome_arquivo {str} -- (default: {'passwords'})
+    
+    Returns:
+        [bool] -- [Se já existir recebe True, senão recebe False]
+    """
     from time import sleep
-    from interface import lines
+    from interface import linhas
 
     try:
-        file = open(file_name + '.txt', 'rt')
-        file.close()
+        arquivo = open(nome_arquivo + '.txt', 'rt')
+        arquivo.close()
     except FileNotFoundError:
         return False
     else:
         return True
 
 
-def create_file(file_name='passwords'):
+def criar_arquivo(nome_arquivo='passwords'):
     from time import sleep
 
     try:
-        file = open(file_name + '.txt', 'wt+')
-        file.close()
+        arquivo = open(nome_arquivo + '.txt', 'wt+')
+        arquivo.close()
     except:
-        print('Error creating file.')
+        print('Error creating arquivo.')
 
 
-def write_passwords_birth_date(file_name, birth_date):
+def escrever_senhas_nascimento(nome_arquivo, data_nascimento):
+    """Escreve como senha somente a data de nascimento.
+    
+    Arguments:
+        nome_arquivo {str} -- Nome do arquivo onde será escrito
+        data_nascimento {str} -- A data de nascimento
+    """
     from time import sleep
 
-    file = open(file_name + '.txt', 'at')
-    file.write(birth_date + '\n')
-    print(birth_date)
-    sleep(0.05)
-    file.write(birth_date[0:4] + birth_date[-2:] + '\n')
-    print(birth_date[0:4] + birth_date[-2:])
-    sleep(0.05)
+    arquivo = open(nome_arquivo + '.txt', 'at')
+    arquivo.write(data_nascimento + '\n')
+    print(data_nascimento)
+    arquivo.write(data_nascimento[0:4] + data_nascimento[-2:] + '\n')
+    print(data_nascimento[0:4] + data_nascimento[-2:])
 
 
-def write_passwords(file_name, name, complements):
+def escrever_senhas(nome_arquivo, nome, complementos):
     from time import sleep
 
     try:
-        file = open(file_name + '.txt', 'at')
+        arquivo = open(nome_arquivo + '.txt', 'at')
     except:
         print('Error trying to open writing file.')
         sleep(0.5)
     else:
-        if len(name) >= 6:
-            print(name)
-            file.write(name + '\n')
+        if len(nome) >= 6:
+            print(nome)
+            arquivo.write(nome + '\n')
 
-        for item in complements:
-            if len(name + item) >= 6:
-                print(name + item)
-                file.write(name + item + '\n')
-                sleep(0.05)
+        for item in complementos:
+            if len(nome + item) >= 6:
+                print(nome + item)
+                arquivo.write(nome + item + '\n')
     finally:
-        file.close()
+        arquivo.close()
 
 
-def write_one_names(file_name, name, surnames, complements):
-    concatenation = name + surnames[0]
-    write_passwords(file_name, concatenation, complements)
+def escrever_um_nome(nome_arquivo, nome, sobrenomes, complementos):
+    """Concatenará o nome com o único sobrenome
+    
+    Arguments:
+        nome_arquivo {str} -- Nome do arquivo que será aberto para escritura
+        nome {str} -- Primeiro nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+        complementos {list()} -- Os dados que será concatenados para a formação de diferentes senhas
+    """
+    concatenacao = nome + sobrenomes[0]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
 
 
-def write_two_names(file_name, name, surnames, complements):
-    concatenation = name + surnames[0] 
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[1]
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[0] + surnames[1]
-    write_passwords(file_name, concatenation, complements)
+def escrever_dois_nomes(nome_arquivo, nome, sobrenomes, complementos):
+    """Concatenará os dados do nome de forma específica para o comprimento do nome.
+    
+    Arguments:
+        nome_arquivo {str} -- Nome do arquivo que será aberto para escritura
+        nome {str} -- Primeiro nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+        complementos {list()} -- Os dados que será concatenados para a formação de diferentes senhas
+    """
+    concatenacao = nome + sobrenomes[0] 
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
 
 
-def write_three_names(file_name, name, surnames, complements):
-    concatenation = name + surnames[0] 
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[1]
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[2]
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[0] + surnames[1]
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[0] + surnames[1] + surnames[2]
-    write_passwords(file_name, concatenation, complements)
+def escrever_tres_nomes(nome_arquivo, nome, sobrenomes, complementos):
+    """Concatenará os dados do nome de forma específica para o comprimento do nome.
+    
+    Arguments:
+        nome_arquivo {[type]} -- Nome do arquivo que será aberto para escritura
+        nome {[type]} -- Primeiro nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+        complementos {list()} -- Os dados que será concatenados para a formação de diferentes senhas
+    """
+    concatenacao = nome + sobrenomes[0] 
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[2]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
 
 
-def write_four_names(file_name, name, surnames, complements):
-    concatenation = name + surnames[0] 
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[1]
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[2]
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[3]
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[0] + surnames[1]
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[0] + surnames[1] + surnames[2]
-    write_passwords(file_name, concatenation, complements)
-    concatenation = name + surnames[0] + surnames[1] + surnames[2] + surnames[3]
+def escrever_quatro_nomes(nome_arquivo, nome, sobrenomes, complementos):
+    """Concatenará os dados do nome de forma específica para o comprimento do nome.
+    
+    Arguments:
+        nome_arquivo {[type]} -- Nome do arquivo que será aberto para escritura
+        nome {[type]} -- Primeiro nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+        complementos {list()} -- Os dados que será concatenados para a formação de diferentes senhas
+    """
+    concatenacao = nome + sobrenomes[0] 
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[2]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[3]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2] + sobrenomes[3]
+
+
+def conta_senhas(nome_arquivo):
+    with open(nome_arquivo + '.txt') as arquivo:
+        total = 0
+
+        for linha in arquivo:
+            total += 1
+
+    return total
