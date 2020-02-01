@@ -1,14 +1,16 @@
-from libs.file_writing import *
-from libs.text_manipulation import *
-from libs.interface import *
-from libs.input import *
+from file_writing import *
+from text_manipulation import *
+from interface import *
+from input import *
 
 show_logo()
+name = ''
+surnames = list()
 data_name = read_name_surname()
 birth_date = read_birth_date()
 nicknames = read_nicknames()
-name = ''
-surnames = list()
+
+print('=' * 41)
 
 if len(data_name) == 0 and len(birth_date) == 0 and len(nicknames) == 0:
     lines('No arguments have been entered. Program closed.')
