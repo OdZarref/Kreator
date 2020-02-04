@@ -38,20 +38,20 @@ def criar_complementos(nascimento):
     return complementos
 
 
-def concatenacao_sobrenome_pequeno(nome, sobrenomes):
-    """Concatenará o sobrenome pequeno com o nome e com o sobrenome que vier à frente.
+def sobrenome_pequeno(nome, sobrenomes):
+    """Concatenará o sobrenome pequeno o sobrenome que vier à frente.
     
     Arguments:
         nome {str} -- Nome da pessoa
         sobrenomes {list()} -- Os sobrenomes da pessoa
     
     Returns:
-        str -- O nome + sobrenome_pequeno + o sobrenome que vier à frente.
+        str -- sobrenome_pequeno + o sobrenome que vier à frente.
     """
-    nome_concatenado = ''
+    sobrenome_pequeno = ''
 
     for pos, sobrenome in enumerate(sobrenomes):
         if len(sobrenome) <= 3:
-            nome_concatenado = nome + sobrenome + sobrenomes[pos + 1]
+            sobrenome_pequeno = sobrenome + sobrenomes[pos + 1]
 
-    return nome_concatenado
+    return sobrenome_pequeno
