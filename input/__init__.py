@@ -8,7 +8,7 @@ def leia_nascimento():
     from interface import linhas
 
     while True:
-        nascimento = str(input('Birth Date: '))
+        nascimento = str(input('Birth Date: [dd/mm/yyyy]'))
 
         if len(nascimento) == 8 or len(nascimento) == 0:
             break
