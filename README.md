@@ -17,7 +17,8 @@ Clone o repositório localmente:
 `git clone https://github.com/Odzarref/Kreator`
 
 Abra o terminal no diretório do repositório clonado e
-digite.  
+digite:  
+
 `python3 kreator.py`
 
 **Windows**:  
@@ -29,9 +30,11 @@ Instale o git:
 https://git-scm.com/downloads
 
 Clone o repositório localmente:  
+
 `git clone https://github.com/Odzarref/Kreator`
 
 Abra o cmd ou Powershell na pasta projeto clonado e escreva:  
+
 `python kreator.py`
 
 
@@ -39,10 +42,10 @@ Abra o cmd ou Powershell na pasta projeto clonado e escreva:
 Coloque as informações pedidas pelo programa, estas são:
 
 **Nome completo**: Aceita o nome junto com os sobrenomes, apenas o nome e nenhum dado (enter).  
-
 obs: Caso nenhum nome seja dado, o arquivo com as senhas receberá "passwords.txt". Caso sim, o arquivo receberá o nome dado.  
 
 **Data de nascimento**: O nascimento ou nenhum dado (enter).  
+obs: Deve ser numérico com a extensão de 8 caracteres e no formato dd/mm/aaaa.
 
 **Apelido**: Aceita um ou mais apelidos. Quando mais de um apelido, utilize um espaço para separá-los.
 
