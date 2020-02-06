@@ -89,10 +89,4 @@ else:
 
         escrever_senhas(nome_arquivo, surname, complementos)
 
-    for apelido in apelidos:
-        if sobrenome_pequeno != '':
-            escrever_senhas(nome_arquivo, apelido + sobrenome_pequeno, complementos)
-
-        escrever_senhas(nome_arquivo, apelido, complementos)
-
     linhas(f'Passwords written: {conta_senhas(nome_arquivo)}')
