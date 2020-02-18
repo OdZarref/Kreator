@@ -1,7 +1,7 @@
-from file_writing import *
-from text_manipulation import *
-from interface import *
-from input import *
+from libs.file_writing import *
+from libs.text_manipulation import *
+from libs.interface import *
+from libs.input import *
 
 mostra_logo()
 nome = ''
