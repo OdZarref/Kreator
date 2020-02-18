@@ -90,3 +90,4 @@ else:
         escrever_senhas(nome_arquivo, surname, complementos)
 
     linhas(f'Passwords written: {conta_senhas(nome_arquivo)}')
+
