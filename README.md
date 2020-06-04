@@ -54,6 +54,8 @@ Quando mais de um apelido, utilize um espaço para separá-los. exemplo: od zarr
 ## Progresso
 * [X] Criação do projeto
 * [X] Leitura e escritura de senhas baseadas em nome completo, data de nascimento e apelidos.
+* [ ] Interface gráfica.
+* [ ] Executável para windows.
 * [ ] Ordenação das senhas pelas mais prováveis primeiro.
 * [ ] Leitura e escritura de senhas baseadas em país e informações adicionais.
-* [ ] Opção de escritura de todas as combinações possíveis de senhas
+* [ ] Opção de escritura de todas as combinações possíveis de senhas.
