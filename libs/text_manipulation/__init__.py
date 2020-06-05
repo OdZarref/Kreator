@@ -38,7 +38,7 @@ def criar_complementos(nascimento):
     return complementos
 
 
-def sobrenome_pequeno(nome, sobrenomes):
+def concatenar_sobrenome_pequeno(nome, sobrenomes):
     """Concatenará o sobrenome pequeno o sobrenome que vier à frente.
     
     Arguments:

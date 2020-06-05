@@ -8,7 +8,6 @@ def verificar_arquivo(nome_arquivo='passwords'):
         [bool] -- [Se já existir recebe True, senão recebe False]
     """
     from time import sleep
-    from libs.interface import linhas
 
     try:
         arquivo = open(nome_arquivo + '.txt', 'rt')
