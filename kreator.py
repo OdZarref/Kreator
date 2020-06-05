@@ -1,7 +1,219 @@
 import tkinter as tk
-from libs.file_writing import *
-from libs.text_manipulation import *
-from libs.input import *
+
+def remove_sobrenome_pequeno(nome, sobrenomes):
+    """Se a pessoa tiver um sobrenome menor que quatro letras, este sobrenome será removido para ser escrito aparte.
+    
+    Arguments:
+        nome {str} -- Nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+    
+    Returns:
+        list() -- A lista sem o sobrenome pequeno
+    """
+    for sobrenome in sobrenomes:
+        if len(sobrenome) <= 3:
+            sobrenomes.remove(sobrenome)
+
+    return sobrenomes
+
+
+def criar_complementos(nascimento):
+    """Cria os complementos que serão concatenados com os dados do nome completo
+    
+    Arguments:
+        nascimento {str} -- A data de nascimento da pessoa
+    
+    Returns:
+        list() -- Uma lista com todos os complementos gerados
+    """
+    complementos = ['123', '1234', '12345']
+
+    if len(nascimento) == 8:
+        complementos.append(nascimento[0:2])
+        complementos.append(nascimento[-2:])
+        complementos.append(nascimento[-4:])
+
+        numero = int(nascimento[-2:])
+        if numero < 10:
+            complementos.append(nascimento[-1])
+
+    return complementos
+
+
+def concatenar_sobrenome_pequeno(nome, sobrenomes):
+    """Concatenará o sobrenome pequeno o sobrenome que vier à frente.
+    
+    Arguments:
+        nome {str} -- Nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+    
+    Returns:
+        str -- sobrenome_pequeno + o sobrenome que vier à frente.
+    """
+    sobrenome_pequeno = ''
+
+    for pos, sobrenome in enumerate(sobrenomes):
+        if len(sobrenome) <= 3:
+            sobrenome_pequeno = sobrenome + sobrenomes[pos + 1]
+
+    return sobrenome_pequeno
+
+
+def verificar_arquivo(nome_arquivo='passwords'):
+    """Verifica se o arquivo que conterá as senhas já existe.
+    
+    Keyword Arguments:
+        nome_arquivo {str} -- (default: {'passwords'})
+    
+    Returns:
+        [bool] -- [Se já existir recebe True, senão recebe False]
+    """
+    from time import sleep
+
+    try:
+        arquivo = open(nome_arquivo + '.txt', 'rt')
+        arquivo.close()
+    except FileNotFoundError:
+        return False
+    else:
+        return True
+
+
+def criar_arquivo(nome_arquivo='passwords'):
+    try:
+        arquivo = open(nome_arquivo + '.txt', 'wt+')
+        arquivo.close()
+    except:
+        print('Error creating arquivo.')
+
+
+def escrever_senhas_nascimento(nome_arquivo, data_nascimento):
+    """Escreve como senha somente a data de nascimento.
+    
+    Arguments:
+        nome_arquivo {str} -- Nome do arquivo onde será escrito
+        data_nascimento {str} -- A data de nascimento
+    """
+    
+    arquivo = open(nome_arquivo + '.txt', 'at')
+    arquivo.write(data_nascimento + '\n')
+    print(data_nascimento)
+    arquivo.write(data_nascimento[0:4] + data_nascimento[-2:] + '\n')
+    print(data_nascimento[0:4] + data_nascimento[-2:])
+
+
+def escrever_senhas(nome_arquivo, nome, complementos):
+    from time import sleep
+
+    try:
+        arquivo = open(nome_arquivo + '.txt', 'at')
+    except:
+        print('Error trying to open writing file.')
+        sleep(0.5)
+    else:
+        if len(nome) >= 6:
+            print(nome)
+            arquivo.write(nome + '\n')
+
+        for item in complementos:
+            if len(nome + item) >= 6:
+                print(nome + item)
+                arquivo.write(nome + item + '\n')
+    finally:
+        arquivo.close()
+
+
+def escrever_um_nome(nome_arquivo, nome, sobrenomes, complementos):
+    """Concatenará o nome com o único sobrenome
+    
+    Arguments:
+        nome_arquivo {str} -- Nome do arquivo que será aberto para escritura
+        nome {str} -- Primeiro nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+        complementos {list()} -- Os dados que será concatenados para a formação de diferentes senhas
+    """
+    concatenacao = nome + sobrenomes[0]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+
+
+def escrever_dois_nomes(nome_arquivo, nome, sobrenomes, complementos):
+    """Concatenará os dados do nome de forma específica para o comprimento do nome.
+    
+    Arguments:
+        nome_arquivo {str} -- Nome do arquivo que será aberto para escritura
+        nome {str} -- Primeiro nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+        complementos {list()} -- Os dados que será concatenados para a formação de diferentes senhas
+    """
+    concatenacao = nome + sobrenomes[0] 
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+
+
+def escrever_tres_nomes(nome_arquivo, nome, sobrenomes, complementos):
+    """Concatenará os dados do nome de forma específica para o comprimento do nome.
+    
+    Arguments:
+        nome_arquivo {[type]} -- Nome do arquivo que será aberto para escritura
+        nome {[type]} -- Primeiro nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+        complementos {list()} -- Os dados que será concatenados para a formação de diferentes senhas
+    """
+    concatenacao = nome + sobrenomes[0] 
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[2]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+
+
+def escrever_quatro_nomes(nome_arquivo, nome, sobrenomes, complementos):
+    """Concatenará os dados do nome de forma específica para o comprimento do nome.
+    
+    Arguments:
+        nome_arquivo {[type]} -- Nome do arquivo que será aberto para escritura
+        nome {[type]} -- Primeiro nome da pessoa
+        sobrenomes {list()} -- Os sobrenomes da pessoa
+        complementos {list()} -- Os dados que será concatenados para a formação de diferentes senhas
+    """
+    concatenacao = nome + sobrenomes[0] 
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[2]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[3]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2]
+    escrever_senhas(nome_arquivo, concatenacao, complementos)
+    concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2] + sobrenomes[3]
+
+
+def conta_senhas(nome_arquivo):
+    with open(nome_arquivo + '.txt') as arquivo:
+        total = 0
+
+        for linha in arquivo:
+            total += 1
+
+    return total
+
+
+def verificar_entrys():
+    if len(entryNome.get().split()) == 0 and len(entryNascimento.get()) == 0 and len(entryApelido.get().split()) == 0:
+        labelResposta = tk.Label(mainFrame, text='No arguments have been entered.', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
+        labelResposta.grid(row=5)
+    else:
+        arquivo(entryNome.get().split(), entryNascimento.get(), entryApelido.get().split())
 
 def arquivo(dados_nome, dados_nascimento, apelidos):
     nome = ''
@@ -123,22 +335,7 @@ radioButton1.grid(row=3, column=1, sticky='w')
 radioButton2.grid(row=3, column=1, sticky='e')
 radioButton1.select()
 
-botaoNome = tk.Button(mainFrame, text='Run', font='Arial 20', command=lambda: verificar())
+botaoNome = tk.Button(mainFrame, text='Run', font='Arial 20', command=lambda: verificar_entrys())
 botaoNome.grid(row=4, column=0, columnspan=4, sticky='we')
 
-
-def verificar():
-    if len(entryNome.get().split()) == 0 and len(entryNascimento.get()) == 0 and len(entryApelido.get().split()) == 0:
-        labelResposta = tk.Label(mainFrame, text='No arguments have been entered.', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
-        labelResposta.grid(row=5)
-    else:
-        arquivo(entryNome.get().split(), entryNascimento.get(), entryApelido.get().split())
-
 root.mainloop()
-
-
-#     nome = ''
-# sobrenomes = list()
-# dados_nome = entryNome.get().split()
-# dados_nascimento = entryNascimento.get()
-# apelidos = entryApelido.get().split()
