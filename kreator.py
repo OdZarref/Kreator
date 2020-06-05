@@ -194,7 +194,7 @@ def escrever_quatro_nomes(nome_arquivo, nome, sobrenomes, complementos):
     escrever_senhas(nome_arquivo, concatenacao, complementos)
     concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2] + sobrenomes[3]
 
-def arquivo(dados_nome, dados_nascimento, apelidos):
+def probability_method(dados_nome, dados_nascimento, apelidos):
     nome = ''
     sobrenomes = list()
     complementos = criar_complementos(dados_nascimento)
@@ -210,6 +210,7 @@ def arquivo(dados_nome, dados_nascimento, apelidos):
         nome_arquivo = 'passwords'
         
     verificar_arquivo1 = verificar_arquivo(nome_arquivo)
+
     if not verificar_arquivo1:
         criar_arquivo(nome_arquivo)
 
@@ -239,33 +240,18 @@ def arquivo(dados_nome, dados_nascimento, apelidos):
 
     if len(apelidos) > 0:
         for apelido in apelidos:
+            if sobrenome_pequeno != '':
+                escrever_senhas(nome_arquivo, apelido + sobrenome_pequeno, complementos)
+
             if len(sobrenomes) == 0:
-                if sobrenome_pequeno != '':
-                    escrever_senhas(nome_arquivo, apelido + sobrenome_pequeno, complementos)
-
                 escrever_senhas(nome_arquivo, apelido, complementos)
-
             elif len(sobrenomes) == 1:
-                if sobrenome_pequeno != '':
-                    escrever_senhas(nome_arquivo, apelido + sobrenome_pequeno, complementos)
-
                 escrever_um_nome(nome_arquivo, apelido, sobrenomes, complementos)
-
             elif len(sobrenomes) == 2:
-                if sobrenome_pequeno != '':
-                    escrever_senhas(nome_arquivo, apelido + sobrenome_pequeno, complementos)
-
                 escrever_dois_nomes(nome_arquivo, apelido, sobrenomes, complementos)
-
             elif len(sobrenomes) == 3:
-                if sobrenome_pequeno != '':
-                    escrever_senhas(nome_arquivo, apelido + sobrenome_pequeno, complementos)
-
                 escrever_tres_nomes(nome_arquivo, apelido, sobrenomes, complementos)
             elif len(sobrenomes) == 4:
-                if sobrenome_pequeno != '':
-                    escrever_senhas(nome_arquivo, apelido + sobrenome_pequeno, complementos)
-                    
                 escrever_quatro_nomes(nome_arquivo, apelido, sobrenomes, complementos)
 
     for surname in sobrenomes:
@@ -291,7 +277,7 @@ def verificar_entrys():
         labelResposta = tk.Label(mainFrame, text='Fill in the fields above!.', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
         labelResposta.grid(row=5, columnspan=4)
     else:
-        arquivo(entryNome.get().split(), entryNascimento.get(), entryApelido.get().split())
+        probability_method(entryNome.get().split(), entryNascimento.get(), entryApelido.get().split())
 
 #inicio
 root = tk.Tk()
