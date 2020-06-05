@@ -16,7 +16,6 @@ def remove_sobrenome_pequeno(nome, sobrenomes):
 
     return sobrenomes
 
-
 def criar_complementos(nascimento):
     """Cria os complementos que serão concatenados com os dados do nome completo
     
@@ -298,6 +297,7 @@ def verificar_entrys():
 root = tk.Tk()
 height = 600
 width = 700
+root.iconphoto(True, tk.PhotoImage(file='files/kreator-logo-100x100.png'))
 posy = (root.winfo_screenheight() / 2) - (height / 2)
 posx = (root.winfo_screenwidth() / 2) - (width / 2)
 root.title('Kreator')
