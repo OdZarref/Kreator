@@ -103,13 +103,11 @@ def escrever_senhas_nascimento(nome_arquivo, data_nascimento):
 
 
 def escrever_senhas(nome_arquivo, nome, complementos):
-    from time import sleep
-
     try:
         arquivo = open(nome_arquivo + '.txt', 'at')
     except:
-        print('Error trying to open writing file.')
-        sleep(0.5)
+        labelResposta = tk.Label(mainFrame, text='Error trying to open writing file..', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
+        labelResposta.grid(row=5, columnspan=4)
     else:
         if len(nome) >= 6:
             print(nome)
@@ -197,24 +195,6 @@ def escrever_quatro_nomes(nome_arquivo, nome, sobrenomes, complementos):
     escrever_senhas(nome_arquivo, concatenacao, complementos)
     concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2] + sobrenomes[3]
 
-
-def conta_senhas(nome_arquivo):
-    with open(nome_arquivo + '.txt') as arquivo:
-        total = 0
-
-        for linha in arquivo:
-            total += 1
-
-    return total
-
-
-def verificar_entrys():
-    if len(entryNome.get().split()) == 0 and len(entryNascimento.get()) == 0 and len(entryApelido.get().split()) == 0:
-        labelResposta = tk.Label(mainFrame, text='No arguments have been entered.', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
-        labelResposta.grid(row=5)
-    else:
-        arquivo(entryNome.get().split(), entryNascimento.get(), entryApelido.get().split())
-
 def arquivo(dados_nome, dados_nascimento, apelidos):
     nome = ''
     sobrenomes = list()
@@ -294,6 +274,25 @@ def arquivo(dados_nome, dados_nascimento, apelidos):
             escrever_senhas(nome_arquivo, apelido + sobrenome_pequeno, complementos)
 
         escrever_senhas(nome_arquivo, surname, complementos)
+    
+    conta_senhas(nome_arquivo)
+    
+def conta_senhas(nome_arquivo):
+    with open(nome_arquivo + '.txt') as arquivo:
+        total = 0
+
+        for linha in arquivo:
+            total += 1
+
+    labelResposta = tk.Label(mainFrame, text=f'Passwords written {total}.', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
+    labelResposta.grid(row=5, columnspan=4)
+
+def verificar_entrys():
+    if len(entryNome.get().split()) == 0 and len(entryNascimento.get()) == 0 and len(entryApelido.get().split()) == 0:
+        labelResposta = tk.Label(mainFrame, text='Fill in the fields above!.', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
+        labelResposta.grid(row=5, columnspan=4)
+    else:
+        arquivo(entryNome.get().split(), entryNascimento.get(), entryApelido.get().split())
 
 #inicio
 root = tk.Tk()
@@ -303,6 +302,7 @@ posy = (root.winfo_screenheight() / 2) - (height / 2)
 posx = (root.winfo_screenwidth() / 2) - (width / 2)
 root.title('Kreator')
 root.geometry('%dx%d+%d+%d' % (width, height, posx, posy))
+root.resizable(False, False)
 marcadorRadio = tk.IntVar()
 
 #botoes, labels e Frames
