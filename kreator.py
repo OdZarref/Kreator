@@ -208,10 +208,8 @@ def probability_method(dados_nome, dados_nascimento, apelidos):
                 sobrenomes.append(nomes)
     else:
         nome_arquivo = 'passwords'
-        
-    verificar_arquivo1 = verificar_arquivo(nome_arquivo)
 
-    if not verificar_arquivo1:
+    if not verificar_arquivo(nome_arquivo):
         criar_arquivo(nome_arquivo)
 
     if len(dados_nascimento) != 0:
@@ -261,7 +259,7 @@ def probability_method(dados_nome, dados_nascimento, apelidos):
         escrever_senhas(nome_arquivo, surname, complementos)
     
     conta_senhas(nome_arquivo)
-    
+
 def conta_senhas(nome_arquivo):
     with open(nome_arquivo + '.txt') as arquivo:
         total = 0
