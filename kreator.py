@@ -194,24 +194,7 @@ def escrever_quatro_nomes(nome_arquivo, nome, sobrenomes, complementos):
     escrever_senhas(nome_arquivo, concatenacao, complementos)
     concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2] + sobrenomes[3]
 
-def probability_method(dados_nome, dados_nascimento, apelidos):
-    nome = ''
-    sobrenomes = list()
-    complementos = criar_complementos(dados_nascimento)
-
-    if len(dados_nome) != 0:
-        for nomes in dados_nome:
-            if nomes == dados_nome[0]:
-                nome = nomes
-                nome_arquivo = nome
-            else:
-                sobrenomes.append(nomes)
-    else:
-        nome_arquivo = 'passwords'
-
-    if not verificar_arquivo(nome_arquivo):
-        criar_arquivo(nome_arquivo)
-
+def probability_method(nome, nome_arquivo, complementos, sobrenomes, dados_nascimento, apelidos):
     if len(dados_nascimento) != 0:
         escrever_senhas_nascimento(nome_arquivo, dados_nascimento)
 
@@ -275,7 +258,24 @@ def verificar_entrys():
         labelResposta = tk.Label(mainFrame, text='Fill in the fields above!.', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
         labelResposta.grid(row=5, columnspan=4)
     else:
-        probability_method(entryNome.get().split(), entryNascimento.get(), entryApelido.get().split())
+        nome = ''
+        sobrenomes = list()
+        complementos = criar_complementos(entryNascimento.get())
+
+        if len(entryNome.get().split()) != 0:
+            for nomes in entryNome.get().split():
+                if nomes == entryNome.get().split()[0]:
+                    nome = nomes
+                    nome_arquivo = nome
+                else:
+                    sobrenomes.append(nomes)
+        else:
+            nome_arquivo = 'passwords'
+
+        if not verificar_arquivo(nome_arquivo):
+            criar_arquivo(nome_arquivo)
+
+        probability_method(nome, nome_arquivo, complementos, sobrenomes, entryNascimento.get(), entryApelido.get().split())
 
 #inicio
 root = tk.Tk()
