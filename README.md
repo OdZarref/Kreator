@@ -58,4 +58,4 @@ Quando mais de um apelido, utilize um espaço para separá-los. exemplo: od zarr
 * [ ] Executável para windows.
 * [ ] Ordenação das senhas pelas mais prováveis primeiro.
 * [ ] Leitura e escritura de senhas baseadas em país e informações adicionais.
-* [ ] Opção de escritura de todas as combinações possíveis de senhas.
+* [ ] Opção de escritura de todas as combinações possíveis de senhas dos dados recebidos.
