@@ -278,7 +278,7 @@ def verificar_entrys():
         if marcadorRadio.get() == 1:
             probability_method(nome, nome_arquivo, complementos, sobrenomes, entryNascimento.get(), entryApelido.get().split())
         else:
-            print('combinatory')
+            print('Permutation')
 
 #inicio
 root = tk.Tk()
@@ -317,7 +317,7 @@ entryApelido.grid(row=2, column=1)
 labelMetodo = tk.Label(mainFrame, text='Method', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
 labelMetodo.grid(row=3, column=0)
 radioButton1 = tk.Radiobutton(mainFrame, text='Probability', variable=marcadorRadio, value=1, font='Arial 12')
-radioButton2 = tk.Radiobutton(mainFrame, text='Combinatory', variable=marcadorRadio, value=2, font='Arial 11')
+radioButton2 = tk.Radiobutton(mainFrame, text='Permutation', variable=marcadorRadio, value=2, font='Arial 12')
 radioButton1.grid(row=3, column=1, sticky='w')
 radioButton2.grid(row=3, column=1, sticky='e')
 radioButton1.select()
