@@ -275,10 +275,10 @@ def verificar_entrys():
         if not verificar_arquivo(nome_arquivo):
             criar_arquivo(nome_arquivo)
 
-    if marcadorRadio.get() == 1:
-        probability_method(nome, nome_arquivo, complementos, sobrenomes, entryNascimento.get(), entryApelido.get().split())
-    else:
-        print('combinatory')
+        if marcadorRadio.get() == 1:
+            probability_method(nome, nome_arquivo, complementos, sobrenomes, entryNascimento.get(), entryApelido.get().split())
+        else:
+            print('combinatory')
 
 #inicio
 root = tk.Tk()
