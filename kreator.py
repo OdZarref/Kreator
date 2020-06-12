@@ -109,12 +109,10 @@ def escrever_senhas(nome_arquivo, nome, complementos):
         labelResposta.grid(row=5, columnspan=4)
     else:
         if len(nome) >= 6:
-            print(nome)
             arquivo.write(nome + '\n')
 
         for item in complementos:
             if len(nome + item) >= 6:
-                print(nome + item)
                 arquivo.write(nome + item + '\n')
     finally:
         arquivo.close()
@@ -193,6 +191,23 @@ def escrever_quatro_nomes(nome_arquivo, nome, sobrenomes, complementos):
     concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2]
     escrever_senhas(nome_arquivo, concatenacao, complementos)
     concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2] + sobrenomes[3]
+
+def combination_permutation_method(elementos, nome_arquivo, complementos):
+    from itertools import permutations, combinations
+
+    stop = len(elementos)
+
+    while stop != 0:
+        combinacoes = combinations(elementos, stop)
+        stop -= 1
+
+        for combinacao in combinacoes:
+            permutacoes = permutations(combinacao)
+
+            for permutacao in permutacoes:
+                escrever_senhas(nome_arquivo, ''.join(permutacao), complementos)
+
+    conta_senhas(nome_arquivo)
 
 def probability_method(nome, nome_arquivo, complementos, sobrenomes, dados_nascimento, apelidos):
     if len(dados_nascimento) != 0:
@@ -278,7 +293,12 @@ def verificar_entrys():
         if marcadorRadio.get() == 1:
             probability_method(nome, nome_arquivo, complementos, sobrenomes, entryNascimento.get(), entryApelido.get().split())
         else:
-            print('Permutation')
+            elementos = list()
+            elementos.append(nome)
+            for sobrenome in sobrenomes: elementos.append(sobrenome)
+            for apelido in entryApelido.get().split(): elementos.append(apelido)
+
+            combination_permutation_method(elementos, nome_arquivo, complementos)
 
 #inicio
 root = tk.Tk()
