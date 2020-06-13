@@ -265,13 +265,14 @@ def conta_senhas(nome_arquivo):
         for linha in arquivo:
             total += 1
 
-    labelResposta = tk.Label(mainFrame, text=f'Passwords written {total}.', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
-    labelResposta.grid(row=5, columnspan=4)
+    escrever_resposta(f'Passwords Written {total}')
+
+def escrever_resposta(texto):
+    labelResposta['text'] = texto
 
 def verificar_entrys():
     if len(entryNome.get().split()) == 0 and len(entryNascimento.get()) == 0 and len(entryApelido.get().split()) == 0:
-        labelResposta = tk.Label(mainFrame, text='Fill in the fields above!.', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
-        labelResposta.grid(row=5, columnspan=4)
+        labelResposta['text'] = 'Fill in the fields above!'
     else:
         nome = ''
         sobrenomes = list()
@@ -342,6 +343,9 @@ radioButton2 = tk.Radiobutton(mainFrame, text='Permutation', variable=marcadorRa
 radioButton1.grid(row=3, column=1, sticky='w')
 radioButton2.grid(row=3, column=1, sticky='e')
 radioButton1.select()
+
+labelResposta = tk.Label(mainFrame, font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
+labelResposta.grid(row=5, columnspan=4)
 
 botaoNome = tk.Button(mainFrame, text='Run', font='Arial 20', command=lambda: verificar_entrys())
 botaoNome.grid(row=4, column=0, columnspan=4, sticky='we')
