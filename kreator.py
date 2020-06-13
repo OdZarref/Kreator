@@ -192,7 +192,7 @@ def escrever_quatro_nomes(nome_arquivo, nome, sobrenomes, complementos):
     escrever_senhas(nome_arquivo, concatenacao, complementos)
     concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2] + sobrenomes[3]
 
-def combination_permutation_method(elementos, nome_arquivo, complementos):
+def combinacao_permutacao_metodo(elementos, nome_arquivo, complementos):
     from itertools import permutations, combinations
 
     stop = len(elementos)
@@ -207,9 +207,24 @@ def combination_permutation_method(elementos, nome_arquivo, complementos):
             for permutacao in permutacoes:
                 escrever_senhas(nome_arquivo, ''.join(permutacao), complementos)
 
-    conta_senhas(nome_arquivo)
+def calcular_senhas_permutacao(elementos):
+    from math import factorial
+    from itertools import combinations
 
-def probability_method(nome, nome_arquivo, complementos, sobrenomes, dados_nascimento, apelidos):
+    resultado = 0
+    p = len(elementos)
+
+    while p != 0:
+        total = 0
+        for combinacao in combinations(elementos, p):
+            total += 1
+
+        resultado += (factorial(p) * 8) * total
+        p -= 1
+
+    return resultado
+
+def probabilidade_metodo(nome, nome_arquivo, complementos, sobrenomes, dados_nascimento, apelidos):
     if len(dados_nascimento) != 0:
         escrever_senhas_nascimento(nome_arquivo, dados_nascimento)
 
@@ -256,9 +271,9 @@ def probability_method(nome, nome_arquivo, complementos, sobrenomes, dados_nasci
 
         escrever_senhas(nome_arquivo, surname, complementos)
     
-    conta_senhas(nome_arquivo)
+    contar_senhas_probabilidade(nome_arquivo)
 
-def conta_senhas(nome_arquivo):
+def contar_senhas_probabilidade(nome_arquivo):
     with open(nome_arquivo + '.txt') as arquivo:
         total = 0
 
@@ -292,14 +307,15 @@ def verificar_entrys():
             criar_arquivo(nome_arquivo)
 
         if marcadorRadio.get() == 1:
-            probability_method(nome, nome_arquivo, complementos, sobrenomes, entryNascimento.get(), entryApelido.get().split())
+            probabilidade_metodo(nome, nome_arquivo, complementos, sobrenomes, entryNascimento.get(), entryApelido.get().split())
         else:
             elementos = list()
             elementos.append(nome)
             for sobrenome in sobrenomes: elementos.append(sobrenome)
             for apelido in entryApelido.get().split(): elementos.append(apelido)
-
-            combination_permutation_method(elementos, nome_arquivo, complementos)
+            combinacao_permutacao_metodo(elementos, nome_arquivo, complementos)
+            labelResposta['font'] = 'Arial 13'
+            labelResposta['text'] = f'Escritas aproximadamente {calcular_senhas_permutacao(elementos)} senhas.'
 
 #inicio
 root = tk.Tk()
