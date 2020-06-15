@@ -354,13 +354,32 @@ def verificar_entrys():
         if marcadorRadio.get() == 1:
             probabilidade_metodo(nome, nome_arquivo, complementos, sobrenomes, entryNascimento.get(), entryApelido.get().split())
         else:
+            def init_permutation():
+                popUp.destroy()
+                combinacao_permutacao_metodo(elementos, nome_arquivo, complementos)
+                labelResposta['font'] = 'Arial 13'
+                labelResposta['text'] = f'Passwords written: {calcular_senhas_permutacao(elementos)}.'
+
             elementos = list()
             elementos.append(nome)
             for sobrenome in sobrenomes: elementos.append(sobrenome)
             for apelido in entryApelido.get().split(): elementos.append(apelido)
-            combinacao_permutacao_metodo(elementos, nome_arquivo, complementos)
-            labelResposta['font'] = 'Arial 13'
-            labelResposta['text'] = f'Escritas aproximadamente {calcular_senhas_permutacao(elementos)} senhas.'
+
+            popUp = tk.Toplevel(root, bg='#0F0F0F')
+            popUp.title('Note')
+
+            height = 70
+            width = 7 * (41 + len(str(calcular_senhas_permutacao(elementos))))
+            posy = (root.winfo_screenheight() / 2) - (height / 2)
+            posx = (root.winfo_screenwidth() / 2) - (width / 2)
+            popUp.geometry('%dx%d+%d+%d' % (width, height, posx, posy))
+            if calcular_senhas_permutacao(elementos) > 100000:
+                topLabel = tk.Label(popUp, text=f'Approximately {calcular_senhas_permutacao(elementos)} passwords will be written.\nThis may take a while...', bg='#0F0F0F', fg='#ffffff')
+            else:
+                topLabel = tk.Label(popUp, text=f'Approximately {calcular_senhas_permutacao(elementos)} passwords will be written.', bg='#0F0F0F', fg='#ffffff')
+            botao1 = tk.Button(popUp, text='Ok', command=init_permutation)
+            topLabel.grid(row=0, column=0, sticky='we')
+            botao1.grid(row=1, column=0)
 
 #inicio
 root = tk.Tk()
