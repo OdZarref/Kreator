@@ -253,15 +253,15 @@ def calcular_senhas_permutacao(elementos):
     return resultado
 
 def probabilidade_metodo(nome, nome_arquivo, complementos, sobrenomes, dados_nascimento, apelidos):
-    """Criara diversas senhas, que terão uma maior probabilidade de serem a correta.
+    """Criará diversas senhas, que terão uma maior probabilidade de serem a correta.
 
     Args:
         nome (str): O nome, ou apelido, ou nome concatenado com alguma coisa.
         nome_arquivo (str): O nome do arquivo que foi criado anteriormente.
-        complementos (list): Uma série de strings que normalmente são 
-        sobrenomes ([type]): [description]
-        dados_nascimento ([type]): [description]
-        apelidos ([type]): [description]
+        complementos (list): Uma série de strings que normalmente são concatenadas com um nome para formar uma senha.
+        sobrenomes (list): Uma lista com os sobrenomes.
+        dados_nascimento (str): A data de nascimento da pessoa.
+        apelidos (list): Uma lista com os apelidos.
     """
     if len(dados_nascimento) != 0:
         escrever_senhas_nascimento(nome_arquivo, dados_nascimento)
