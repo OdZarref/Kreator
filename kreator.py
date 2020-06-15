@@ -1,5 +1,6 @@
 import tkinter as tk
 
+#--------------------------------------------Escritura------------------------------------------
 def remove_sobrenome_pequeno(nome, sobrenomes):
     """Se a pessoa tiver um sobrenome menor que quatro letras, este sobrenome será removido para ser escrito aparte.
     
@@ -57,7 +58,7 @@ def concatenar_sobrenome_pequeno(nome, sobrenomes):
 
     return sobrenome_pequeno
 
-
+#------------------------------------------------Manipulação--------------------------------
 def verificar_arquivo(nome_arquivo='passwords'):
     """Verifica se o arquivo que conterá as senhas já existe.
     
@@ -79,6 +80,11 @@ def verificar_arquivo(nome_arquivo='passwords'):
 
 
 def criar_arquivo(nome_arquivo='passwords'):
+    """Criará o arquivo que conterá as senhas.
+
+    Args:
+        nome_arquivo (str, optional): [Se for dado um argumento, o nome do arquivo será este argumento]. Senão, recebe 'passwords'.
+    """
     try:
         arquivo = open(nome_arquivo + '.txt', 'wt+')
         arquivo.close()
@@ -102,6 +108,13 @@ def escrever_senhas_nascimento(nome_arquivo, data_nascimento):
 
 
 def escrever_senhas(nome_arquivo, nome, complementos):
+    """Escreverá as senhas no arquivo.
+
+    Args:
+        nome_arquivo (str): O nome do arquivo que contem as senhas.
+        nome (str): O nome da pessoa, ou nomes concatenados.
+        complementos (list): São os dados que serão concatenados com o [nome].
+    """
     try:
         arquivo = open(nome_arquivo + '.txt', 'at')
     except:
@@ -193,6 +206,13 @@ def escrever_quatro_nomes(nome_arquivo, nome, sobrenomes, complementos):
     concatenacao = nome + sobrenomes[0] + sobrenomes[1] + sobrenomes[2] + sobrenomes[3]
 
 def combinacao_permutacao_metodo(elementos, nome_arquivo, complementos):
+    """Gerará todas as combinações e permutações possíveis de senhas e para cada, concatenará com os complementos.
+
+    Args:
+        elementos ([list]): [São os nomes, sobrenomes e apelidos. Juntos em uma lista.]
+        nome_arquivo ([str]): [É o nome do arquivo que foi criado anteriormente.]
+        complementos ([list]): [São uma série de strings que normalmente são concatenados com alguma senha.]
+    """
     from itertools import permutations, combinations
 
     stop = len(elementos)
@@ -208,6 +228,14 @@ def combinacao_permutacao_metodo(elementos, nome_arquivo, complementos):
                 escrever_senhas(nome_arquivo, ''.join(permutacao), complementos)
 
 def calcular_senhas_permutacao(elementos):
+    """Contará, aproximadamente, quantas senhas serão escritas através do método de permutação.
+
+    Args:
+        elementos (list): São os nomes, sobrenomes e apelidos juntos em uma lista.
+
+    Returns:
+        int: Quantas senhas, aproximadamente serão geradas.
+    """
     from math import factorial
     from itertools import combinations
 
@@ -225,6 +253,16 @@ def calcular_senhas_permutacao(elementos):
     return resultado
 
 def probabilidade_metodo(nome, nome_arquivo, complementos, sobrenomes, dados_nascimento, apelidos):
+    """Criara diversas senhas, que terão uma maior probabilidade de serem a correta.
+
+    Args:
+        nome (str): O nome, ou apelido, ou nome concatenado com alguma coisa.
+        nome_arquivo (str): O nome do arquivo que foi criado anteriormente.
+        complementos (list): Uma série de strings que normalmente são 
+        sobrenomes ([type]): [description]
+        dados_nascimento ([type]): [description]
+        apelidos ([type]): [description]
+    """
     if len(dados_nascimento) != 0:
         escrever_senhas_nascimento(nome_arquivo, dados_nascimento)
 
@@ -273,7 +311,15 @@ def probabilidade_metodo(nome, nome_arquivo, complementos, sobrenomes, dados_nas
     
     contar_senhas_probabilidade(nome_arquivo)
 
+def escrever_resposta(texto):
+    labelResposta['text'] = texto
+
 def contar_senhas_probabilidade(nome_arquivo):
+    """Após a escritura do método de probalidade, esta função todo o arquivo de senhas, contando uma por uma.
+
+    Args:
+        nome_arquivo (str): O nome do arquivo com as senhas
+    """
     with open(nome_arquivo + '.txt') as arquivo:
         total = 0
 
@@ -282,10 +328,9 @@ def contar_senhas_probabilidade(nome_arquivo):
 
     escrever_resposta(f'Passwords Written {total}')
 
-def escrever_resposta(texto):
-    labelResposta['text'] = texto
-
 def verificar_entrys():
+    """Verifica se o usuário digitou os argumentos necessários. Se sim, cria algumas variáveis necessárias e chama outras funções, passando como parâmetro estas variáveis.
+    """
     if len(entryNome.get().split()) == 0 and len(entryNascimento.get()) == 0 and len(entryApelido.get().split()) == 0:
         labelResposta['text'] = 'Fill in the fields above!'
     else:
