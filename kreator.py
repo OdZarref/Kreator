@@ -331,7 +331,7 @@ def contar_senhas_probabilidade(nome_arquivo):
 def tamanho_popup(elementos):
     import os
 
-    if os.system == 'nt':
+    if os.name == 'nt':
         width = 5.5 * (41 + len(str(calcular_senhas_permutacao(elementos))))
     else:
         width = 7 * (41 + len(str(calcular_senhas_permutacao(elementos))))
