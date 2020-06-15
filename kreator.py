@@ -328,6 +328,16 @@ def contar_senhas_probabilidade(nome_arquivo):
 
     escrever_resposta(f'Passwords Written {total}')
 
+def tamanho_popup(elementos):
+    import os
+
+    if os.system == 'nt':
+        width = 5.5 * (41 + len(str(calcular_senhas_permutacao(elementos))))
+    else:
+        width = 7 * (41 + len(str(calcular_senhas_permutacao(elementos))))
+
+    return width
+
 def verificar_entrys():
     """Verifica se o usuário digitou os argumentos necessários. Se sim, cria algumas variáveis necessárias e chama outras funções, passando como parâmetro estas variáveis.
     """
@@ -369,7 +379,7 @@ def verificar_entrys():
             popUp.title('Note')
 
             height = 70
-            width = 7 * (41 + len(str(calcular_senhas_permutacao(elementos))))
+            width = tamanho_popup(elementos)
             posy = (root.winfo_screenheight() / 2) - (height / 2)
             posx = (root.winfo_screenwidth() / 2) - (width / 2)
             popUp.geometry('%dx%d+%d+%d' % (width, height, posx, posy))
