@@ -38,7 +38,7 @@ Com o cmd ou Powershell na pasta do projeto clonado escreva:
 
 
 ## Como usar
-Coloque as informações pedidas pelo programa, estas são:
+Coloque as informações que são pedidas pelo programa, estas são:
 
 **Nome completo**: Aceita o nome junto com os sobrenomes, apenas o nome e nenhum dado (enter).  
 obs: Caso nenhum nome seja dado, o arquivo com as senhas receberá "passwords.txt". Caso sim, o arquivo receberá o nome dado.  
