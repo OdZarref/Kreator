@@ -329,6 +329,14 @@ def contar_senhas_probabilidade(nome_arquivo):
     escrever_resposta(f'Passwords Written {total}')
 
 def tamanho_popup(elementos):
+    """Calcula qual será o comprimento do popup.
+
+    Args:
+        elementos (list): Irá calcular quantas letras tem.
+
+    Returns:
+        int: Qual o comprimento do popup.
+    """
     import os
 
     if os.name == 'nt':
