@@ -1,3 +1,2 @@
-Kreator é um gerador Open-Source de wordlist  gera uma série das mais prováveis senhas. O usuário dá certas informações que são perguntadas pelo programa, e em seguida é gerada uma wordlist.
-Feito como uma ferramenta de Teste de Penetração, deve ser usada de forma ética, a responsabilidade de uso é totalmente do usuário.
-
+Kreator is an Open-Source wordlist generator that generates a series of the most likely passwords. The user gives certain information that is asked by the program and then a wordlist is generated.
+Made as a Penetration Test tool, it must be used ethically, the user is responsible for its use.
