@@ -9,7 +9,6 @@ Para rodar o programa são necessários certos passos. Que dependem do sistema d
 **Windows**:  
 
 Baixe o instalador por [aqui](https://github.com/OdZarref/Kreator/raw/master/versions/kreator%20v1.0.exe) ou a versão Portable por [aqui](https://github.com/OdZarref/Kreator/raw/master/versions/kreator%20v1.0%20portable.zip).
-
 obs: Execute em modo administrador para que o programa consiga escrever as senhas.
 
 **Windows pelo código fonte**
