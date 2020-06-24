@@ -57,7 +57,6 @@ Quando mais de um apelido, utilize um espaço para separá-los. exemplo: od zarr
 
 **Onde as senhas são escritas**: São escritas no diretório do programa. O nome do arquivo pode variar de acordo com os dados que o usuário passar. Se as senhas não estiverem sendo escritas, e você está usando a versão instalada no windows, execute o programa em modo administrador.
 
-
 ## Progresso
 * [X] Criação do projeto
 * [X] Leitura e escritura de senhas baseadas em nome completo, data de nascimento e apelidos.
