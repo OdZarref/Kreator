@@ -64,6 +64,7 @@ Existem dois métodos que podem ser escolhidos "probability" e "permutation".
 **Probability**: Este é o método mais simples que irá gerar uma wordlist mais seleta. Com as senhas que mais provavelmente estarão certas. O que ocasiona em uma menor quantidade de senhas. É o método para ocasiões em que não é possível ter infinitas tentativas, onde há bloqueio de tentativas por hora e etc.
 
 **Permutation**: Neste caso, o programa pegará todos os argumentos de nome completo e apelidos e transformará em uma lista, e com esta, gerará todas as combinações e todas as permutações de cada combinação. Aqui é há uma menor precisão em cada senha gerada, já que os argumentos serão combinados uns com os outros sem nenhum critério. É recomendado para casos sem bloqueio de tentativas, pois gerará uma enorme quantidade de senhas.
+
 obs: Quanto mais apelidos, nomes e sobrenomes o usuário dar para o programa, facilmente é possível chegar a milhões de senhas.
 
 
