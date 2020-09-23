@@ -74,5 +74,6 @@ obs: Quanto mais apelidos, nomes e sobrenomes o usuário dar para o programa, fa
 * [X] Interface gráfica.
 * [X] Opção de escritura de todas as combinações possíveis de senhas dos dados recebidos.
 * [X] Executável para windows.
+* [x] Opção do usuário adicionar complementos
 * [ ] Ordenação das senhas pelas mais prováveis primeiro.
 * [ ] Leitura e escritura de senhas baseadas em país e informações adicionais.
