@@ -17,7 +17,7 @@ def remove_sobrenome_pequeno(nome, sobrenomes):
 
     return sobrenomes
 
-def criar_complementos(nascimento):
+def criar_complementos(nascimento, complementosAdicionais=None):
     """Cria os complementos que serão concatenados com os dados do nome completo
     
     Arguments:
@@ -26,14 +26,17 @@ def criar_complementos(nascimento):
     Returns:
         list() -- Uma lista com todos os complementos gerados
     """
-    complementos = ['123', '1234', '12345']
+    complementos = ['1', '2', '3', '4', '5', '123', '1234', '12345']
 
     if len(nascimento) == 8:
         complementos.append(nascimento[0:2])
         complementos.append(nascimento[-2:])
         complementos.append(nascimento[-4:])
-
         numero = int(nascimento[-2:])
+
+        for complementoAdicional in complementosAdicionais:
+            complementos.append(complementoAdicional)
+            
         if numero < 10:
             complementos.append(nascimento[-1])
 
@@ -102,9 +105,7 @@ def escrever_senhas_nascimento(nome_arquivo, data_nascimento):
     
     arquivo = open(nome_arquivo + '.txt', 'at')
     arquivo.write(data_nascimento + '\n')
-    print(data_nascimento)
     arquivo.write(data_nascimento[0:4] + data_nascimento[-2:] + '\n')
-    print(data_nascimento[0:4] + data_nascimento[-2:])
 
 
 def escrever_senhas(nome_arquivo, nome, complementos):
@@ -354,7 +355,7 @@ def verificar_entrys():
     else:
         nome = ''
         sobrenomes = list()
-        complementos = criar_complementos(entryNascimento.get())
+        complementos = criar_complementos(entryNascimento.get(), entryComplementos.get().split())
 
         if len(entryNome.get().split()) != 0:
             for nomes in entryNome.get().split():
@@ -432,12 +433,17 @@ labelApelido.grid(row=2, column=0)
 entryApelido = tk.Entry(mainFrame, font='Arial 15', fg='#ffffff', bg='#0F0F0F')
 entryApelido.grid(row=2, column=1)
 
+labelComplementos = tk.Label(mainFrame, text='Complements', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
+labelComplementos.grid(row=3, column=0)
+entryComplementos = tk.Entry(mainFrame, font='Arial 15', fg='#ffffff', bg='#0F0F0F')
+entryComplementos.grid(row=3, column=1)
+
 labelMetodo = tk.Label(mainFrame, text='Method', font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
-labelMetodo.grid(row=3, column=0)
+labelMetodo.grid(row=4, column=0)
 radioButton1 = tk.Radiobutton(mainFrame, text='Probability', variable=marcadorRadio, value=1, font='Arial 12')
 radioButton2 = tk.Radiobutton(mainFrame, text='Permutation', variable=marcadorRadio, value=2, font='Arial 12')
-radioButton1.grid(row=3, column=1, sticky='w')
-radioButton2.grid(row=3, column=1, sticky='e')
+radioButton1.grid(row=4, column=1, sticky='w')
+radioButton2.grid(row=4, column=1, sticky='e')
 radioButton1.select()
 
 labelResposta = tk.Label(mainFrame, font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
