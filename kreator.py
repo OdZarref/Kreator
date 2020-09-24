@@ -36,7 +36,7 @@ def criar_complementos(nascimento, complementosAdicionais=None):
 
         for complementoAdicional in complementosAdicionais:
             complementos.append(complementoAdicional)
-            
+
         if numero < 10:
             complementos.append(nascimento[-1])
 
@@ -290,6 +290,8 @@ def probabilidade_metodo(nome, nome_arquivo, complementos, sobrenomes, dados_nas
 
     if len(apelidos) > 0:
         for apelido in apelidos:
+            escrever_senhas(nome_arquivo, apelido, complementos)
+            
             if sobrenome_pequeno != '':
                 escrever_senhas(nome_arquivo, apelido + sobrenome_pequeno, complementos)
 
