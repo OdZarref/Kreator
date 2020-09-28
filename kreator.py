@@ -37,6 +37,9 @@ def criar_complementos(nascimento, complementosAdicionais=None):
         for complementoAdicional in complementosAdicionais:
             complementos.append(complementoAdicional)
 
+            if complementoAdicional.isnumeric() and len(complementoAdicional) == 4:
+                complementos.append(complementoAdicional[-2:])
+
         if numero < 10:
             complementos.append(nascimento[-1])
 
