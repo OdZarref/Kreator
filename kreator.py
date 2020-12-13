@@ -231,7 +231,7 @@ def combinacao_permutacao_metodo(elementos, nome_arquivo, complementos):
             for permutacao in permutacoes:
                 escrever_senhas(nome_arquivo, ''.join(permutacao), complementos)
 
-def calcular_senhas_permutacao(elementos):
+def calcular_senhas_permutacao(elementos, complementos):
     """Contará, aproximadamente, quantas senhas serão escritas através do método de permutação.
 
     Args:
@@ -251,7 +251,7 @@ def calcular_senhas_permutacao(elementos):
         for combinacao in combinations(elementos, p):
             total += 1
 
-        resultado += (factorial(p) * 8) * total
+        resultado += (factorial(p) * (8 + len(complementos))) * total
         p -= 1
 
     return resultado
@@ -334,7 +334,7 @@ def contar_senhas_probabilidade(nome_arquivo):
 
     escrever_resposta(f'Passwords Written {total}')
 
-def tamanho_popup(elementos):
+def tamanho_popup(elementos, complementos):
     """Calcula qual será o comprimento do popup.
 
     Args:
@@ -346,9 +346,9 @@ def tamanho_popup(elementos):
     import os
 
     if os.name == 'nt':
-        width = 5.5 * (41 + len(str(calcular_senhas_permutacao(elementos))))
+        width = 5.5 * (41 + len(str(calcular_senhas_permutacao(elementos, complementos))))
     else:
-        width = 7 * (41 + len(str(calcular_senhas_permutacao(elementos))))
+        width = 7 * (41 + len(str(calcular_senhas_permutacao(elementos, complementos))))
 
     return width
 
@@ -382,7 +382,7 @@ def verificar_entrys():
                 popUp.destroy()
                 combinacao_permutacao_metodo(elementos, nome_arquivo, complementos)
                 labelResposta['font'] = 'Arial 13'
-                labelResposta['text'] = f'Passwords written: {calcular_senhas_permutacao(elementos)}.'
+                labelResposta['text'] = f'Passwords written: {calcular_senhas_permutacao(elementos, complementos)}.'
 
             elementos = list()
             elementos.append(nome)
@@ -393,14 +393,14 @@ def verificar_entrys():
             popUp.title('Note')
 
             height = 70
-            width = tamanho_popup(elementos)
+            width = tamanho_popup(elementos, complementos)
             posy = (root.winfo_screenheight() / 2) - (height / 2)
             posx = (root.winfo_screenwidth() / 2) - (width / 2)
             popUp.geometry('%dx%d+%d+%d' % (width, height, posx, posy))
-            if calcular_senhas_permutacao(elementos) > 100000:
-                topLabel = tk.Label(popUp, text=f'Approximately {calcular_senhas_permutacao(elementos)} passwords will be written.\nThis may take a while...', bg='#0F0F0F', fg='#ffffff')
+            if calcular_senhas_permutacao(elementos, complementos) > 100000:
+                topLabel = tk.Label(popUp, text=f'Approximately {calcular_senhas_permutacao(elementos, complementos)} passwords will be written.\nThis may take a while...', bg='#0F0F0F', fg='#ffffff')
             else:
-                topLabel = tk.Label(popUp, text=f'Approximately {calcular_senhas_permutacao(elementos)} passwords will be written.', bg='#0F0F0F', fg='#ffffff')
+                topLabel = tk.Label(popUp, text=f'Approximately {calcular_senhas_permutacao(elementos, complementos)} passwords will be written.', bg='#0F0F0F', fg='#ffffff')
             botao1 = tk.Button(popUp, text='Ok', command=init_permutation)
             topLabel.grid(row=0, column=0, sticky='we')
             botao1.grid(row=1, column=0)
