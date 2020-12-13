@@ -452,9 +452,9 @@ radioButton2.grid(row=4, column=1, sticky='e')
 radioButton1.select()
 
 labelResposta = tk.Label(mainFrame, font='Arial 20', fg='#ffffff', bg='#0F0F0F', pady=10)
-labelResposta.grid(row=5, columnspan=4)
+labelResposta.grid(row=6, columnspan=4)
 
 botaoNome = tk.Button(mainFrame, text='Run', font='Arial 20', command=lambda: verificar_entrys())
-botaoNome.grid(row=4, column=0, columnspan=4, sticky='we')
+botaoNome.grid(row=5, column=0, columnspan=4, sticky='we')
 
 root.mainloop()
