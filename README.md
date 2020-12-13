@@ -8,11 +8,11 @@ Para rodar o programa são necessários certos passos. Que dependem do sistema d
 
 **Windows**:  
 
-Baixe o instalador por [aqui](https://github.com/OdZarref/Kreator/raw/master/versions/kreator%20v1.0.exe) ou a versão Portable por [aqui](https://github.com/OdZarref/Kreator/raw/master/versions/kreator%20v1.0%20portable.zip).
+Baixe o instalador por [aqui](https://github.com/OdZarref/Kreator/raw/master/versions/windows/kreator%20v1.0.exe) ou a versão Portable por [aqui](https://github.com/OdZarref/Kreator/raw/master/versions/windows/kreator%20v1.0%20portable.zip).
 
 obs: Execute em modo administrador para que o programa consiga escrever as senhas.
 
-**Windows pelo código fonte**
+**Windows pelo código-fonte**
 
 Instale o Python:  
 https://www.python.org/downloads/
@@ -28,7 +28,11 @@ Com o cmd ou Powershell na pasta do projeto clonado escreva:
 
 `python kreator.py`
 
-**Linux (distribuições baseadas em debian)**:  
+**Linux**
+
+Baixe o programa por [aqui](https://github.com/OdZarref/Kreator/raw/master/versions/linux/kreator%20v1.1.zip), extraia e rode o arquivo "kreator".
+
+**Linux pelo código-fonte (distribuições baseadas em debian)**:  
 
 É necessário ter o git instalado, caso não tenha:  
 
@@ -54,6 +58,8 @@ obs: Deve ser numérico com a extensão de 8 caracteres e no formato dd/mm/aaaa.
 **Apelido**: Aceita um, mais de um ou nenhum.  
 obs: Caso o apelido contenha mais de uma palavra, o escreva junto (sem espaços). exemplo: odzarref.  
 Quando mais de um apelido, utilize um espaço para separá-los. exemplo: od zarref
+
+**Complementos**: São dados que serão concatenados com as combinações e permutações para gerar uma nova senha. Normalmente são "123", "1234" e etc. O próprio programa já vem com os complementos mais genéricos, na maioria das vezes não é necessário colocar novos. Caso você ache necessário adicionar novos, utilize esta região para adicionar. Você pode também acessar o arquivo "configs.py" e procurar "complements" para ver, adicionar e remover os complementos padrões.
 
 **Onde as senhas são escritas**: São escritas no diretório do programa. O nome do arquivo pode variar de acordo com os dados que o usuário passar. Se as senhas não estiverem sendo escritas, e você está usando a versão instalada no windows, execute o programa em modo administrador.
 
