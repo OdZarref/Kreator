@@ -26,7 +26,7 @@ def criar_complementos(nascimento, complementosAdicionais=None):
     Returns:
         list() -- Uma lista com todos os complementos gerados
     """
-    complementos = ['1', '2', '3', '4', '5', '123', '1234', '12345']
+    from config import complements as complementos
 
     if len(nascimento) == 8:
         complementos.append(nascimento[0:2])
