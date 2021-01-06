@@ -248,7 +248,7 @@ def calcular_senhas_permutacao(elementos, complementos):
 
     while p != 0:
         total = 0
-        for combinacao in combinations(elementos, p):
+        for _ in combinations(elementos, p):
             total += 1
 
         resultado += (factorial(p) * (8 + len(complementos))) * total
@@ -329,7 +329,7 @@ def contar_senhas_probabilidade(nome_arquivo):
     with open(nome_arquivo + '.txt') as arquivo:
         total = 0
 
-        for linha in arquivo:
+        for _ in arquivo:
             total += 1
 
     escrever_resposta(f'Passwords Written {total}')
